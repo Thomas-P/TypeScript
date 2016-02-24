@@ -360,7 +360,7 @@ namespace ts {
                 "ES7ArrayInclude": LibraryKind.ES7ArrayInclude
             },
             paramType: Diagnostics.KIND,
-            description: Diagnostics.Specifies_library_to_be_included_in_the_compilation_Colon_0,
+            description: Diagnostics.Specify_library_to_be_included_in_the_compilation_Colon,
             error: Diagnostics.Arguments_for_library_option_must_be_Colon_0  // TODO (yuisu): Update the error message
         }
     ];

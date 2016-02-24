@@ -651,6 +651,8 @@ namespace ts {
         const usageColumn: string[] = []; // Things like "-d, --declaration" go in here.
         const descriptionColumn: string[] = [];
 
+        const descriptionKindMap: Map<string[]> = {};  // Map between option.description and list of option.type if it is a kind
+
         for (let i = 0; i < optsList.length; i++) {
             const option = optsList[i];
 
@@ -671,7 +673,24 @@ namespace ts {
             usageText += getParamType(option);
 
             usageColumn.push(usageText);
-            descriptionColumn.push(getDiagnosticText(option.description));
+            let description: string;
+
+            if (option.paramType && option.description === Diagnostics.Specify_library_to_be_included_in_the_compilation_Colon) {
+                description = getDiagnosticText(option.description);
+                const type = <Map<number>>option.type;
+                const typeNames: string[] = []
+                for (const name in type) {
+                    if (type.hasOwnProperty(name)) {
+                        typeNames.push(name);
+                    }
+                }
+                descriptionKindMap[description] = typeNames;
+            }
+            else {
+                description = getDiagnosticText(option.description);
+            }
+
+            descriptionColumn.push(description);
 
             // Set the new margin for the description column if necessary.
             marginLength = Math.max(usageText.length, marginLength);
@@ -687,7 +706,15 @@ namespace ts {
         for (let i = 0; i < usageColumn.length; i++) {
             const usage = usageColumn[i];
             const description = descriptionColumn[i];
+            const kindsList = descriptionKindMap[description];
             output += usage + makePadding(marginLength - usage.length + 2) + description + sys.newLine;
+
+            if (kindsList) {
+                for (const kind of kindsList) {
+                    output += makePadding(marginLength + 4) + kind + sys.newLine;
+                }
+                output += sys.newLine;
+            }
         }
 
         sys.write(output);

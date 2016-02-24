@@ -2604,7 +2604,7 @@
         "category": "Message",
         "code": 6112
     },
-    "Specifies library to be included in the compilation: {0}": {
+    "Specify library to be included in the compilation:": {
         "category": "Message",
         "code": 6113
     },
