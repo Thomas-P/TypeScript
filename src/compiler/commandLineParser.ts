@@ -159,7 +159,6 @@ namespace ts {
         },
         {
             name: "pretty",
-            paramType: Diagnostics.KIND,
             description: Diagnostics.Stylize_errors_and_messages_using_color_and_context_experimental,
             type: "boolean"
         },
@@ -326,6 +325,42 @@ namespace ts {
             name: "noImplicitUseStrict",
             type: "boolean",
             description: Diagnostics.Do_not_emit_use_strict_directives_in_module_output
+        },
+        {
+            name: "library",
+            shortName: "l",
+            type: {
+                // Preset flags
+                "DOMWithES5": LibraryKind.DOMWithES5,
+                "WebWorkerWithES5": LibraryKind.WebWorkerWithES5,
+                // JavaScript only
+                "ES5": LibraryKind.ES5,
+                "ES6": LibraryKind.ES6,
+                "ES7": LibraryKind.ES7,
+                // Host only
+                "DOM": LibraryKind.DOM,
+                "LatestDOM": LibraryKind.LatestDOM,
+                "WebWorker": LibraryKind.WebWorker,
+                "ScriptHost": LibraryKind.ScriptHost,
+                // ES6 Or ESNext By-feature options
+                "ES6Array": LibraryKind.ES6Array,
+                "ES6Collection": LibraryKind.ES6Collection,
+                "ES6Function": LibraryKind.ES6Function,
+                "ES6Iterable": LibraryKind.ES6Iterable,
+                "ES6Math": LibraryKind.ES6Math,
+                "ES6Number": LibraryKind.ES6Number,
+                "ES6Object": LibraryKind.ES6Object,
+                "ES6Promise": LibraryKind.ES6Promise,
+                "ES6Proxy": LibraryKind.ES6Proxy,
+                "ES6Reflect": LibraryKind.ES6Reflect,
+                "ES6Regexp": LibraryKind.ES6Regexp,
+                "ES6Symbol": LibraryKind.ES6Symbol,
+                "ES6WellKnownSymbol": LibraryKind.ES6WellKnownSymbol,
+                "ES7ArrayInclude": LibraryKind.ES7ArrayInclude
+            },
+            paramType: Diagnostics.KIND,
+            description: Diagnostics.Specifies_library_to_be_included_in_the_compilation_Colon_0,
+            error: Diagnostics.Arguments_for_library_option_must_be_Colon_0  // TODO (yuisu): Update the error message
         }
     ];
 

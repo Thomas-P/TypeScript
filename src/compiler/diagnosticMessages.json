@@ -2604,6 +2604,14 @@
         "category": "Message",
         "code": 6112
     },
+    "Specifies library to be included in the compilation: {0}": {
+        "category": "Message",
+        "code": 6113
+    },
+    "Arguments for library option must be: {0}": {
+      "category": "Error",
+      "code": 6114
+    },
 
     "Variable '{0}' implicitly has an '{1}' type.": {
         "category": "Error",
